@@ -17,7 +17,7 @@ class RecipeDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(recipe.image),
+            Image.network(recipe.image, alignment: Alignment.center,),
             const SizedBox(height: CustomSize.spaceBetweenItem),
             const Padding(
               padding: EdgeInsets.all(8.0),

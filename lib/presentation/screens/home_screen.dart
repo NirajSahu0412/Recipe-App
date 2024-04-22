@@ -19,8 +19,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _searchController = TextEditingController();
 
-  bool select = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,12 +90,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: ListTile(
-                            leading: Image.network(recipe.image),
-                            title: Text(recipe.title),
+                            leading: Image.network(
+                              width: 100,
+                              recipe.image,
+                            ),
+                            title: Text(
+                              recipe.title,
+                            ),
                             trailing: IconButton(
                               icon: const Icon(Icons.bookmark_add_outlined),
-                              selectedIcon: const Icon(Icons.bookmark),
-                              isSelected: select,
                               onPressed: () {
                                 BlocProvider.of<SavedRecipesBloc>(context)
                                     .toggleSaved(recipe);
