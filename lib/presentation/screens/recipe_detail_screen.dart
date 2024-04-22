@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/utils/constants/sizes.dart';
+import 'package:recipe_app/utils/helpers/helper_functions.dart';
 import '../../data/models/recipe_model.dart';
 
 class RecipeDetailScreen extends StatelessWidget {
@@ -14,48 +15,38 @@ class RecipeDetailScreen extends StatelessWidget {
         title: Text(recipe.title),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.network(recipe.image, alignment: Alignment.center,),
-            const SizedBox(height: CustomSize.spaceBetweenItem),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.network(
+                height: CustomHelperFunctions.screenHeight() / 3,
+                width: double.infinity - 50,
+                recipe.image,
+                alignment: Alignment.center,
+                fit: BoxFit.contain,
+              ),
+              const SizedBox(height: CustomSize.spaceBetweenItem),
+              const Text(
                 'Ingredients:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-            ),
-            SizedBox(
-              height: 80,
-              child: Expanded(
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: recipe.ingredients.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Chip(
-                        label: Text(recipe.ingredients[index]),
-                      ),
-                    );
-                  },
-                ),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: recipe.ingredients.length,
+                itemBuilder: (context, index) {
+                  return Text("- ${recipe.ingredients[index]}");
+                },
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
+              const SizedBox(height: CustomSize.spaceBetweenItem),
+              const Text(
                 'Instructions:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(recipe.instructions),
-            ),
-          ],
+              Text(recipe.instructions),
+            ],
+          ),
         ),
       ),
     );
