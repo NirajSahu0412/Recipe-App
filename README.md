@@ -1,6 +1,25 @@
-# recipe_app
+# Recipe App Documentation
 
-A new Flutter project.
+
+## Overview
+The Recipe App is a Flutter application designed to allow users to browse, search, and save recipes. It provides features to fetch recipe information such as title, image, ingredients, and instructions. The app incorporates state management using the BLoC (Business Logic Component) pattern to manage app-wide state effectively. Users can save their favorite recipes for future reference and view/manage saved recipes in a separate section of the app.
+
+## Features
+1. Search Recipe:
+Search for your desire recipe according to the name and ingredient.
+2. Recipe Details:
+Provides a recipe detail screen to show detailed information about a selected recipe, including ingredients and instructions.
+3. Save Functionality:
+Allows users to save their favorite recipes for future reference. You can view your saved recipes in separate screen.
+
+## Architecture
+
+For this application, I have used Bloc Architecture. File structure is :
+* bloc/
+* data/
+* presentation/
+* utils/
+* main.dart
 
 ## Getting Started
 
